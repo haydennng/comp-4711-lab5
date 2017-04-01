@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.3
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Feb 14, 2017 at 08:40 AM
--- Server version: 5.7.13
--- PHP Version: 7.0.8
+-- Host: 127.0.0.1
+-- Generation Time: Mar 08, 2017 at 02:17 AM
+-- Server version: 10.1.19-MariaDB
+-- PHP Version: 5.6.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,8 +17,32 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `todo`
+-- Database: `lab6db`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ci_sessions`
+--
+
+DROP TABLE IF EXISTS `ci_sessions`;
+CREATE TABLE `ci_sessions` (
+  `id` varchar(128) NOT NULL,
+  `ip_address` varchar(45) NOT NULL,
+  `timestamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `data` blob NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `ci_sessions`
+--
+
+INSERT INTO `ci_sessions` (`id`, `ip_address`, `timestamp`, `data`) VALUES
+('3oggrif7nqkjktidfdcjhk7j8p5qmgiv', '127.0.0.1', 1488934428, 0x5f5f63695f6c6173745f726567656e65726174657c693a313438383933343133393b75736572726f6c657c733a353a224f776e6572223b),
+('8lc3am4m9vdsvr3jtkign8i7vo380hfo', '127.0.0.1', 1488933984, 0x5f5f63695f6c6173745f726567656e65726174657c693a313438383933333731363b75736572726f6c657c733a353a224f776e6572223b),
+('bpun9stejbt2u30069abb5sg6t7j2tam', '127.0.0.1', 1488934612, 0x5f5f63695f6c6173745f726567656e65726174657c693a313438383933343537393b75736572726f6c657c733a353a224f776e6572223b),
+('oatc7d07ua3r4kt2cad8qqnggt2ahean', '127.0.0.1', 1488932160, 0x5f5f63695f6c6173745f726567656e65726174657c693a313438383933323033323b);
 
 -- --------------------------------------------------------
 
@@ -152,7 +176,7 @@ INSERT INTO `tasks` (`id`, `task`, `priority`, `size`, `group`, `deadline`, `sta
 (4, 'Paint the fence', 1, 2, 1, '', '', ''),
 (5, 'Study for midterms', 3, 3, 2, '', '', ''),
 (6, 'Intramural hockey game', 1, 2, 4, '', '', ''),
-(7, 'Canucks hockey game', 3, 3, 4, '20170305', '', ''),
+(7, 'Canucks hockey game', 3, 3, 4, '20170305', '2', ''),
 (8, 'Buy steel-toed boots', 2, 1, 3, '', '', ''),
 (9, 'Learn French', 1, 3, 3, '20161231', '1', ''),
 (10, 'Hit the gym', 2, 1, 4, '', '', ''),
@@ -165,6 +189,13 @@ INSERT INTO `tasks` (`id`, `task`, `priority`, `size`, `group`, `deadline`, `sta
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `ci_sessions`
+--
+ALTER TABLE `ci_sessions`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `ci_sessions_timestamp` (`timestamp`);
 
 --
 -- Indexes for table `flags`
